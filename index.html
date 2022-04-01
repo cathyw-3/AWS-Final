@@ -49,9 +49,10 @@
 	$('#submitButton').on('click', function() {
 	    $.ajax({
 	        type: 'POST',
-	        data: JSON.stringify({"messsage": $('#msg').val()}),
+		data: {"message": "alert test 2."},
+	        //data: JSON.stringify({"messsage": $('#msg').val()}),
 		url: API_URL+'/wrdbtest',
-		//contentType: "application/json",
+		contentType: "application/json",
 
 	        success: function() {
 	    	    location.reload();
