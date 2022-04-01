@@ -39,8 +39,8 @@
 	        success: function(data) {
 	    	    $('#wrdb').html('');
 		    data.Items.forEach(function(dataItem) {
-		        $('#wrdb').append('<p>' + dataItem.date + '</p>');
-		        $('#wrdb').append('<p>' + dataItem.message + '</p>');
+		        $('#wrdb').append('<p>' + dataItem.date[1] + '</p>');
+		        //$('#wrdb').append('<p>' + dataItem.message + '</p>');
 		    })
 	        }	
 	    });
