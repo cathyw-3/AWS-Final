@@ -49,11 +49,11 @@
 	$('#submitButton').on('click', function() {
 	    $.ajax({
 	        type: 'POST',
-	        url: API_URL+'/wrdbtest',
-		data: JSON.stringify({"messsage": $('#msg').val()}),
+	        data: JSON.stringify({"messsage": $('#msg').val()}),
+		url: API_URL+'/wrdbtest',
 		contentType: "application/json",
 
-	        success: function() {
+	        success: function(data) {
 	    	    location.reload();
 	        }	
 	    });
