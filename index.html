@@ -50,7 +50,7 @@
 	    $.ajax({
 	        type: 'POST',
 		//data: {"message": "alert test 2."},
-	        data: JSON.stringify({"messsage": $('#msg').val()}),
+	        data: JSON.stringify({messsage: $('#msg').val()}),
 		url: API_URL+'/wrdbtest',
 		contentType: "application/json",
 
