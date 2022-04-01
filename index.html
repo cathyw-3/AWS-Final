@@ -47,7 +47,6 @@
         });
 
 	$('#submitButton').on('click', function() {
-	    alert($('#msg').val());
 	    $.ajax({
 	        type: 'POST',
 	        data: JSON.stringify({"messsage": $('#msg').val()}),
