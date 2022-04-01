@@ -34,7 +34,7 @@
         $(document).ready(function() {
 	    $.ajax({
 	        type: 'GET',
-	        url: ' https://bzhm0jyrlc.execute-api.us-east-1.amazonaws.com/wrDBtest',
+	        url: ' https://bzhm0jyrlc.execute-api.us-east-1.amazonaws.com/wrDBtest/wrdbtest',
 	        success: function(data) {
 	    	    $('#wrdb').html('');
 		    data.Items.forEach(function(dataItem) {
