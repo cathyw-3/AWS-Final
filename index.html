@@ -17,52 +17,5 @@
     <h1> Front-End Read and Write Test </h1>
     
 
-    <div id="wrdb">
-
-    </div>
-
-
-    <form>
-        <label for="msg"> Message </label>
-	<textarea id="msg"></textarea>
-
-	<button id="submitButton"> Submit </button>
-    </form> 
-   
-    <a class="home-button" href="/register.html">Register</a>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script type="text/javascript">
-	var API_URL = 'https://bzhm0jyrlc.execute-api.us-east-1.amazonaws.com/wrDBtest'
-        $(document).ready(function() {
-	    $.ajax({
-	        type: 'GET',
-	        url: API_URL+'/wrdbtest',
-	        success: function(data) {
-	    	    $('#wrdb').html('');
-		    data.Items.forEach(function(dataItem) {
-		        $('#wrdb').append('<p>' + dataItem.date.N + '</p>');
-		        $('#wrdb').append('<p>' + dataItem.message.S + '</p>');
-		    })
-	        }	
-	    });
-        });
-
-	$('#submitButton').on('click', function() {
-	    $.ajax({
-	        type: 'POST',
-		//data: {"message": "alert test 2."},
-	        data: JSON.stringify({"message": $('#msg').val()}),
-		url: API_URL+'/wrdbtest',
-		contentType: "application/json",
-
-	        success: function() {
-	    	    location.reload();
-	        }	
-	    });
-	    return false;
-	});
-    </script>
-
 </body>
 </html>
