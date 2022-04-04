@@ -24,6 +24,7 @@ function tablestr(data, num){
 	for(var i=num1;i<num2;i++){
 		var str = '';
 		for(var h in data[i]){
+			alert(data[i][h].N);
 			str+='<td>'+data[i][h]+'</td>';
 		}
 		document.getElementById("table").innerHTML+='<tr>'+str+'</tr>';
