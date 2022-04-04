@@ -4,7 +4,7 @@ function limits(data){
 	var countLim = Math.ceil(data.length/len);
 	document.getElementById("inputs").innerHTML='';
 	for(var i=1;i<=countLim;i++){
- 		document.getElementById("inputs").innerHTML+='<input type="button" value="'+i+'"onclick="limitinput(data, this)"/>';
+ 		document.getElementById("inputs").innerHTML+='<input type="button" value="'+i+'" onclick="limitinput(data, this)"/>';
 	}
 }
 
