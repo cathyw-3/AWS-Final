@@ -2,6 +2,7 @@ var len = 3;
 
 function limits(data){
 	var countLim = Math.ceil(data.length/len);
+	alert(data.length);
 	document.getElementById("inputs").innerHTML='';
 	for(var i=1;i<=countLim;i++){
  		document.getElementById("inputs").innerHTML+='<input type="button" value="'+i+'"onclick="limitinput(data, this)"/>';
