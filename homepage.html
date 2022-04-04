@@ -32,6 +32,7 @@
 	        		type: 'GET',
 	        		url: API_URL+'/wrdbtest',
 	        		success: function(data) {
+					alert(choose);
 					limits(data);
 					document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
 					tablestr(data, 1);
