@@ -122,7 +122,7 @@ var WildRydes = window.WildRydes || {};
             function signinSuccess() {
                 console.log('Successfully Logged In');
 		//sign in our main homepage, test.html is for test, you can change anytime.
-                window.location.href = 'test.html';
+                window.location.href = 'homepage.html';
             },
             function signinError(err) {
                 alert(err);
