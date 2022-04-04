@@ -24,7 +24,7 @@
 		</div>
 	</div>
 	
-	<script src="js/homepage.js"></script>
+	
 	<script type="text/javascript">
 		var API_URL = 'https://bzhm0jyrlc.execute-api.us-east-1.amazonaws.com/wrDBtest'
 		$(document).ready(function() {
@@ -32,7 +32,8 @@
 	        		type: 'GET',
 	        		url: API_URL+'/wrdbtest',
 	        		success: function(data) {
-					alert(choose);
+					alert("test start");
+					alert(data.length);
 					limits(data);
 					document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
 					tablestr(data, 1);
@@ -40,6 +41,7 @@
 	    		});
         	});
 	</script>
+	<script src="js/homepage.js"></script>
 
 
 </body>
