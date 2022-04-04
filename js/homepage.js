@@ -4,15 +4,15 @@ function limits(data){
 	var countLim = Math.ceil(data.length/len);
 	document.getElementById("inputs").innerHTML='';
 	for(var i=1;i<=countLim;i++){
- 		document.getElementById("inputs").innerHTML+='<input type="button" value="'+i+'"onclick="limitinput(this)"/>';
+ 		document.getElementById("inputs").innerHTML+='<input type="button" value="'+i+'"onclick="limitinput(data, this)"/>';
 	}
 }
 
 var choose = 0;
-function limitinput(ids){
+function limitinput(data, ids){
 	choose = ids.value;
- 	tablestr(choose);
- 	limits();
+ 	tablestr(data, choose);
+ 	limits(data);
   	ids.style.backgroundColor='red';
  	liminputcolor(choose);
 }
