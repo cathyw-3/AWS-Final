@@ -15,34 +15,31 @@
 
 	<p> Hello, Flat Advisor Homepage! Change to your design!</P>
 	<div class="all">
-		<table frame="box" id="table1">
-			<tr>
-    				<td>Month</td>
-    				<td>Savings</td>
-  			</tr>
-  			<tr>
-    				<td>January</td>
-    				<td>$100</td>
-  			</tr>
-		</table>
-		<p></p>
-		<p></p>
-		<table frame="box" id="table2">
-			<tr>
-    				<td>Test2</td>
-    				<td>shdhiuilkmsdddc</td>
-  			</tr>
-  			<tr>
-    				<td>flat: aeu1h</td>
-    				<td>price: shdiiudvvf</td>
-				<td>location: ssdsiudhi</td>
-  			</tr>
+		<table frame="box" id="table">
+			
 		</table>
 
 		<div id="inputs">
    
 		</div>
 	</div>
+	
+	<script src="js/homepage.js"></script>
+	<script type="text/javascript">
+		var API_URL = 'https://bzhm0jyrlc.execute-api.us-east-1.amazonaws.com/wrDBtest'
+		$(document).ready(function() {
+	    		$.ajax({
+	        		type: 'GET',
+	        		url: API_URL+'/wrdbtest',
+	        		success: function(data) {
+					limits(data);
+					document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
+					tablestr(1);
+	        		}	
+	    		});
+        	});
+	</script>
+
 
 </body>
 </html>
