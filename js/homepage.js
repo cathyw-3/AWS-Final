@@ -1,0 +1,39 @@
+var len = 3;
+
+function limits(data){
+	var countLim = Math.ceil(data.length/len);
+	document.getElementById("inputs").innerHTML='';
+	for(var i=1;i<=countLim;i++){
+ 		document.getElementById("inputs").innerHTML+='<input type="button" value="'+i+'"onclick="limitinput(this)"/>';
+	}
+}
+
+var choose = 0;
+function limitinput(ids){
+	choose = ids.value;
+ 	tablestr(choose);
+ 	limits();
+  	ids.style.backgroundColor='red';
+ 	liminputcolor(choose);
+}
+
+function tablestr(num){
+	var num1 = (num-1)*len;
+	var num2 = num*len;
+	document.getElementById("table").innerHTML='';
+	for(var i=num1;i<num2;i++){
+		var str = '';
+		for(var h in strs[i]){
+			str+='<td>'+strs[i][h]+'</td>';
+		}
+		document.getElementById("table").innerHTML+='<tr>'+str+'</tr>';
+ 	}
+}
+
+function liminputcolor(choose){
+ document.getElementById("inputs").childNodes[choose-1].style.backgroundColor="red";
+}
+
+limits();
+document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
+tablestr(1);
