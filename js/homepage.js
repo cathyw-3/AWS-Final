@@ -17,14 +17,14 @@ function limitinput(ids){
  	liminputcolor(choose);
 }
 
-function tablestr(num){
+function tablestr(data, num){
 	var num1 = (num-1)*len;
 	var num2 = num*len;
 	document.getElementById("table").innerHTML='';
 	for(var i=num1;i<num2;i++){
 		var str = '';
-		for(var h in strs[i]){
-			str+='<td>'+strs[i][h]+'</td>';
+		for(var h in data[i]){
+			str+='<td>'+data[i][h]+'</td>';
 		}
 		document.getElementById("table").innerHTML+='<tr>'+str+'</tr>';
  	}
@@ -33,7 +33,3 @@ function tablestr(num){
 function liminputcolor(choose){
  document.getElementById("inputs").childNodes[choose-1].style.backgroundColor="red";
 }
-
-limits();
-document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
-tablestr(1);
