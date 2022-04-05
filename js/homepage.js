@@ -1,42 +1,9 @@
 var len = 3;
-var strs = [
- {
- "id":123,
- "pwd":456
- },
- {
- "id":456,
- "pwd":123
- },
- {
- "id":4681,
- "pwd":9815
- },
- {
- "id":471,
- "pwd":4981
- },
- {
- "id":1234789,
- "pwd":156
- },
- {
- "id":789,
- "pwd":158
- },
- {
- "id":"vgwh",
- "pwd":"vgsya"
- },
- {
- "id":1,
- "pwd":"tcv"
- },
- {
- "id":256,
- "pwd":"vtc0"
- }
-];
+var strs = [];
+
+function get_data(data) {
+	strs = data;
+}
 
 function limits(){
 	var countLim = Math.ceil(strs.length/len);
@@ -61,8 +28,8 @@ function tablestr(num){
 	document.getElementById("table").innerHTML='';
 	for(var i=num1;i<num2;i++){
 		var str = '';
-		str+='<td>'+strs[i].id+'</td>';
-		str+='<td>'+strs[i].pwd+'</td>';
+		str+='<td>'+strs[i].date.N+'</td>';
+		str+='<td>'+strs[i].message.S+'</td>';
 		document.getElementById("table").innerHTML+='<tr>'+str+'</tr>';
  	}
 }
