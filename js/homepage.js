@@ -36,10 +36,15 @@ function tablestr(num){
 		str_arr[i-num1] = str;
  	}
 	document.getElementById("table1").innerHTML+='<tr>'+str_arr[0]+'</tr>';
+	document.getElementById("table1").innerHTML+='<input type="button" value="love" onclick="handleLove({0})"/>'.format(strs[0].date.N);
 	document.getElementById("table2").innerHTML+='<tr>'+str_arr[1]+'</tr>';
 	document.getElementById("table3").innerHTML+='<tr>'+str_arr[2]+'</tr>';
 }
 
 function liminputcolor(choose){
  document.getElementById("inputs").childNodes[choose-1].style.backgroundColor="red";
+}
+
+function handleLove(userid) {
+	alert(userid);
 }
