@@ -23,15 +23,21 @@ function limitinput(ids){
 }
 
 function tablestr(num){
+	var str_arr = []
 	var num1 = (num-1)*len;
 	var num2 = num*len;
-	document.getElementById("table").innerHTML='';
+	document.getElementById("table1").innerHTML='';
+	document.getElementById("table2").innerHTML='';
+	document.getElementById("table3").innerHTML='';
 	for(var i=num1;i<num2;i++){
 		var str = '';
 		str+='<td>'+strs[i].date.N+'</td>';
 		str+='<td>'+strs[i].message.S+'</td>';
-		document.getElementById("table").innerHTML+='<tr>'+str+'</tr>';
+		str_arr[i-num1] = str;
  	}
+	document.getElementById("table1").innerHTML+='<tr>'+str_arr[0]+'</tr>';
+	document.getElementById("table2").innerHTML+='<tr>'+str_arr[1]+'</tr>';
+	document.getElementById("table3").innerHTML+='<tr>'+str_arr[2]+'</tr>';
 }
 
 function liminputcolor(choose){
