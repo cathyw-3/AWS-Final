@@ -31,11 +31,11 @@ function tablestr(num){
 	document.getElementById("table3").innerHTML='';
 	for(var i=num1;i<num2;i++){
 		var str = '';
+		var id = strs[i].date.N;
 		str+='<td>'+strs[i].date.N+'</td>';
 		str+='<td>'+strs[i].message.S+'</td>';
-		var temp1 = '<input type="button" value="love" onclick="handleLove({0})"/>';
-		var temp2 = temp1.format(strs[i].date.N);
-		alert(temp2);
+		var temp1 = '<input type="button" value="love" onclick="handleLove('+id+')"/>';
+		alert(temp1);
 		str_arr[i-num1] = str;
  	}
 	document.getElementById("table1").innerHTML+='<tr>'+str_arr[0]+'</tr>';
