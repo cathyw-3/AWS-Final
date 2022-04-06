@@ -33,8 +33,9 @@ function tablestr(num){
 		var str = '';
 		str+='<td>'+strs[i].date.N+'</td>';
 		str+='<td>'+strs[i].message.S+'</td>';
-		str+='<td>'+'<input type="button" value="love" onclick="handleLove({0})"/>'.format(strs[i].date.N)+'</td>';
-		alert(str);
+		var temp1 = '<input type="button" value="love" onclick="handleLove({0})"/>';
+		var temp2 = temp1.format(strs[i].date.N);
+		alert(temp2);
 		str_arr[i-num1] = str;
  	}
 	document.getElementById("table1").innerHTML+='<tr>'+str_arr[0]+'</tr>';
