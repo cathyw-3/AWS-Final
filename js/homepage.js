@@ -33,7 +33,7 @@ function tablestr(num){
 		var str = '';
 		str+='<td>'+strs[i].date.N+'</td>';
 		str+='<td>'+strs[i].message.S+'</td>';
-		str+='<td>'+'<input type="button" value="love" onclick=handleLove("id")/>'+'</td>';
+		str+='<td>'+'<input type="button" value="love" onclick="handleLove("id")"/>'+'</td>';
 		str_arr[i-num1] = str;
  	}
 	document.getElementById("table1").innerHTML+='<tr>'+str_arr[0]+'</tr>';
