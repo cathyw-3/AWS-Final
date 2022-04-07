@@ -35,8 +35,8 @@
         }
 
         .box {
-            width: 500px;
-            height: 350px;
+            width: 70%;
+            height: 80%;
             padding: 40px;
             position: absolute;
             top: 50%;
@@ -54,6 +54,7 @@
         }
 
         .box label{
+        display: flex;
         font-size: 17px;
         display: inline-block;
         padding: 20px 0px;
@@ -96,21 +97,26 @@
 </head>
 
 <body>
+
 <form class="box">
 	<h1> Upload Your Flat Information</h1>
 
 
 		<label for="info1"> Flat Information 1 </label>
 		<textarea id="info1"></textarea>
+                                <br/>
 
 		<label for="info2"> Flat Information 2 </label>
 		<textarea id="info2"></textarea>
+                                <br/>
 
 		<label for="info3"> Flat Information 3 </label>
 		<textarea id="info3"></textarea>
+                                <br/>
 
 		<label for="info4"> Flat Information n </label>
-		<textarea id="info4"></textarea>
+		<textarea id="info4"></textarea>  
+                                <br/>
 
 		<button id="handleUpload"> Upload </button>
 
