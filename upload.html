@@ -9,19 +9,103 @@
   <link rel="stylesheet" href="css/font.css">
   <link rel="stylesheet" href="css/main.css">
 
+	<style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            background: url(1.webp) no-repeat 0px 0px;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            -moz-background-size: 100% 100%;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .box {
+            width: 500px;
+            height: 350px;
+            padding: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50% , -50%);
+            background-color: White;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .box h1 {
+            color: black;
+            font-size: 500;
+            padding:5px;
+        }
+
+        .box label{
+        font-size: 17px;
+        display: inline-block;
+        padding: 20px 0px;
+        text-align: left;
+        width: 150px;
+        vertical-align: top;
+        }
+
+
+        .box textarea{
+        background: #f5f5f5;
+            font-size: 15px;
+            margin:10px auto;
+            text-align: left;
+            outline: none;
+            border: none;
+            padding: 5px 5px;
+            width: 320px;
+            color: black;
+        }
+
+        .box button{
+            width: 100px;
+            padding: 10px 10px;
+            background: #677eff;
+            cursor:pointer;
+            outline: none;
+            border: none;
+            text-align: center;
+            font-size: 17px;
+            font-weight: 500;
+            color: white;
+        }
+
+        .box button:hover {
+            background: #0000cd;
+        }
+        </style>
+
 </head>
 
 <body>
+<form class="box">
+	<h1> Upload Your Flat Information</h1>
 
-	<p> Hello, Flat Advisor Upload! Change to your design!</P>
-	
-	<form>
-        	<label for="info1"> Flat Information 1 </label>
+
+		<label for="info1"> Flat Information 1 </label>
 		<textarea id="info1"></textarea>
-		
+
 		<label for="info2"> Flat Information 2 </label>
 		<textarea id="info2"></textarea>
-		
+
 		<label for="info3"> Flat Information 3 </label>
 		<textarea id="info3"></textarea>
 
@@ -29,7 +113,8 @@
 		<textarea id="info4"></textarea>
 
 		<button id="handleUpload"> Upload </button>
-    	</form> 
+
+</form>
 
 </body>
 </html>
