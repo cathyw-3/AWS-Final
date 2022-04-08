@@ -75,15 +75,9 @@
 <form class="header">
 	<h1>Flat Advisor</h1>
 </form>
-<script type="text/javascript">
-	var API_URL = 'https://bzhm0jyrlc.execute-api.us-east-1.amazonaws.com/wrDBtest';
-	var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
-	var filterLikes_url = "window.location.href='filterLikes.html'"
-//?userid="+userid+"'"
-</script>
 	<form class="navbar">
 		<input type="button" id="upload" value="Upload Your Flat Here!" onclick="window.location.href='upload.html'"/>
-		<input type="button" id="filterLikes" value="Filter as Most Likes" onclick=filterLikes_url/>
+		<input type="button" id="filterLikes" value="Filter as Most Likes" onclick="window.location.href='filterLikes.html'"/>
 		<input type="button" id="filterReference" value="Filter as Your Preference"/>
 		<input type="button" id="history" value="User History Records" onclick="window.location.href='user.html'"/>
 	</form>
@@ -112,11 +106,16 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript">
+		var API_URL = 'https://bzhm0jyrlc.execute-api.us-east-1.amazonaws.com/wrDBtest';
+		var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
 		$(document).ready(function() {
 	    		$.ajax({
 	        		type: 'GET',
 	        		url: API_URL+'/wrdbtest',
 	        		success: function(data) {
+					data.Items.sort(function(a, b){
+              					return b.clike - a.clike;
+            				});
 					get_data(userid, data.Items);
 					limits();
 					document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
@@ -124,23 +123,6 @@
 	        		}
 	    		});
         	});
-		
-		$('#filterLikes').on('click', function() {
-	    		$.ajax({
-	        		type: 'GET',
-				url: API_URL+'/wrdbtest',
-
-	        		success: function(data) {
-					data.Items.sort(function(a, b){
-              					return b.clike - a.clike;
-            				});
-	    	    			get_data(userid, data.Items);
-					limits();
-					document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
-					tablestr(1);
-	        		}
-	    		});
-		});
 	</script>
 	<script src="js/cognito-auth.js"></script>
 	<script src="js/homepage.js"></script>
