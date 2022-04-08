@@ -1,23 +1,24 @@
+import boto3
+import json
+import urllib3
+
 import numpy as np
 import pandas as pd
 
+http = urllib3.PoolManager()
 
-def get_latent_factors(file):
-    # get latent factors from txt
-    data = []
-    with open(file, 'r', encoding='utf-8') as f:
-        line = f.readline()
-        while line:
-            line = line.strip()
-            data.append(line.split())
-            line = f.readline()
-    # transfer the list to dictionary
-    factors = {}
-    for i in range(len(data)):
-        ID = data[i][0]
-        factor = [float(x) for x in data[i][1:]]
-        factors[ID] = factor
-    return factors
+
+def get_latent_factors(records):
+    P, Q = {}, {}
+    for record in records:
+        vector = record['vector'].split(' ')
+        vector = [int(x) for x in vector]
+        if record['type'] == "user":
+            vector = record
+            P[record['id']]  = vector
+        if record['type'] == "item":
+            Q[record['id']]  = vector
+    return P, Q
 
 
 def recommend_top_k(p, Q, k):
@@ -27,33 +28,45 @@ def recommend_top_k(p, Q, k):
         q = np.array(q)
         score[itemID] = p @ q
     # sort
-    score = sorted(score.items(), key=lambda x:x[1], reverse=True)
+    score = sorted(score.items(), key=lambda x: x[1], reverse=True)
     # get top k items
     recommend_list = [x[0] for x in score[0:k]]
     return recommend_list
 
 
-def main():
-    # build the latent factors dictionary
-    P = get_latent_factors('user_latent_factor.txt')
-    Q = get_latent_factors('item_latent_factor.txt')
-
-    # obtain the user ID
+def lambda_handler(event, context):
+    print(event)
     # TODO
-    userID = '1'
+
+    # 1 & 2 Extract relevant metadata including S3URL out of input event
+    object_get_context = event["getObjectContext"]
+    request_route = object_get_context["outputRoute"]
+    request_token = object_get_context["outputToken"]
+    s3_url = object_get_context["inputS3Url"]
+    userID = object_get_context['userID']
+
+    # 3 - Download S3 File
+    response = http.request('GET', s3_url)
+
+    original_object = response.data.decode('utf-8')
+    as_list = json.loads(original_object)
+
+    # build the latent factors dictionary
+    # P = get_latent_factors('user_latent_factor.txt')
+    # Q = get_latent_factors('item_latent_factor.txt')
+    P, Q = get_latent_factors(as_list)
 
     # get the user latent factor
     if userID in P.keys():
         p = P[userID]
     else:
-        F = 40
-        p = [1/F for i in range(F)]
+        F = 32
+        p = [1 / F for i in range(F)]
 
     # recommend
-    recommend_list = recommend_top_k(p, Q, 10)
-    # TODO
+    recommend_list = recommend_top_k(p, Q, 20)
 
-
-
-if __name__ == '__main__':
-    main()
+    return {
+        'statusCode': 200,
+        'body': json.dumps('Hello from Lambda!')
+    }

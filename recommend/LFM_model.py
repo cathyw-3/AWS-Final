@@ -1,23 +1,38 @@
+import json
+
 import random
 import numpy as np
 import pandas as pd
 
-def get_latent_factors(file):
-    # get latent factors from txt
-    data = []
-    with open(file, 'r', encoding='utf-8') as f:
-        line = f.readline()
-        while line:
-            line = line.strip()
-            data.append(line.split())
-            line = f.readline()
-    # transfer the list to dictionary
-    factors = {}
-    for i in range(len(data)):
-        ID = data[i][0]
-        factor = [float(x) for x in data[i][1:]]
-        factors[ID] = factor
-    return factors
+# def get_latent_factors(file):
+#     # get latent factors from txt
+#     data = []
+#     with open(file, 'r', encoding='utf-8') as f:
+#         line = f.readline()
+#         while line:
+#             line = line.strip()
+#             data.append(line.split())
+#             line = f.readline()
+#     # transfer the list to dictionary
+#     factors = {}
+#     for i in range(len(data)):
+#         ID = data[i][0]
+#         factor = [float(x) for x in data[i][1:]]
+#         factors[ID] = factor
+#     return factors
+
+
+def get_latent_factors(records):
+    P, Q = {}, {}
+    for record in records:
+        vector = record['vector'].split(' ')
+        vector = [int(x) for x in vector]
+        if record['type'] == "user":
+            vector = record
+            P[record['id']]  = vector
+        if record['type'] == "item":
+            Q[record['id']]  = vector
+    return P, Q
 
 
 def latent_factor_model(records, P, Q, learning_rate, Lambda):
@@ -42,17 +57,22 @@ def latent_factor_model(records, P, Q, learning_rate, Lambda):
     return loss / len(records), P, Q
 
 
-def print_latent_factors(file, data):
-    # print latent factors to txt
+def print_latent_factors(file, P, Q):
+    records = []
+    for id, value in P.items():
+        hash = {'type': 'user', 'id': id}
+        hash['vector'] = ' '.join([str(x) for x in value])
+        records.append(hash)
+    for id, value in Q.items():
+        hash = {'type': 'item', 'id': id}
+        hash['vector'] = ' '.join([str(x) for x in value])
+        records.append(hash)
+
+    # print latent factors to json
     with open(file, 'w', encoding='utf-8') as f:
-        for key, vector in data.items():
-            f.write(key)
-            for value in vector:
-                f.write(' ' + str(value))
-            f.write('\n')
+        f.write(json.dumps(records))
 
-
-def main():
+def lambda_handler(event, context):
     # get the user and item list
     # TODO
     users = ['1', '2']
@@ -63,8 +83,8 @@ def main():
 
     # init the model
     # build the latent factors dictionary
-    P = get_latent_factors('./user_latent_factor.txt')
-    Q = get_latent_factors('./item_latent_factor.txt')
+    # P = get_latent_factors('./user_latent_factor.txt')
+    # Q = get_latent_factors('./item_latent_factor.txt')
 
     # get the records
     # TODO
@@ -92,9 +112,11 @@ def main():
         # test_loss = latent_factor_model_test(records, P, Q, idx)
 
     # write to text
-    print_latent_factors('./user_latent_factor.txt', P)
-    print_latent_factors('./item_latent_factor.txt', Q)
+    print_latent_factors('./user_latent_factor.json', P)
+    print_latent_factors('./item_latent_factor.json', Q)
 
-
-if __name__ == '__main__':
-    main()
+    # TODO implement
+    return {
+        'statusCode': 200,
+        'body': json.dumps('Hello from Lambda!')
+    }
