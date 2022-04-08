@@ -34,6 +34,7 @@ function tablestr(num){
 	for(var i=num1;i<num2;i++){
 		var str = '';
 		var id = strs[i].flatid;
+		alert(id);
 		str+='<td>'+strs[i].floor_size+'</td>';
 		str+='<td>'+strs[i].furnishing+'</td>';
 		var temp1 = '<input type="button" value="love" onclick="handleLove('+id+')"/>';
