@@ -114,7 +114,6 @@
 	        		url: API_URL+'/wrdbtest',
 	        		success: function(data) {
 					get_data(userid, data.Items);
-					alert(data.Items.length);
 					limits();
 					document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
 					tablestr(1);

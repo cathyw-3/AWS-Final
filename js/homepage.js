@@ -32,18 +32,20 @@ function tablestr(num){
 	document.getElementById("table2").innerHTML='';
 	document.getElementById("table3").innerHTML='';
 	for(var i=num1;i<num2;i++){
-		var str = '';
-		var id = strs[i].flatid;
-		alert(id);
-		str+='<td>'+strs[i].floor_size+'</td>';
-		str+='<td>'+strs[i].furnishing+'</td>';
-		var temp1 = '<input type="button" value="love" onclick="handleLove('+id+')"/>';
-		str+='<td>'+temp1+'</td>';
-		str_arr[i-num1] = str;
+		if (i < strs.length) {
+			var str = '';
+			var id = strs[i].flatid;
+			str+='<td>'+strs[i].floor_size+'</td>';
+			str+='<td>'+strs[i].furnishing+'</td>';
+			var temp1 = '<input type="button" value="love" onclick="handleLove('+id+')"/>';
+			str+='<td>'+temp1+'</td>';
+			str_arr[i-num1] = str;
+		}
  	}
-	document.getElementById("table1").innerHTML+='<tr>'+str_arr[0]+'</tr>';
-	document.getElementById("table2").innerHTML+='<tr>'+str_arr[1]+'</tr>';
-	document.getElementById("table3").innerHTML+='<tr>'+str_arr[2]+'</tr>';
+	var table_arr = ["table1", "table2", "table3"];
+	for (var j = 0; j < str_arr.length; ++j) {
+		document.getElementById(table_arr[j]).innerHTML+='<tr>'+str_arr[j]+'</tr>';
+	}
 }
 
 function liminputcolor(choose){
