@@ -118,7 +118,7 @@ var WildRydes = window.WildRydes || {};
         //var email = $('#emailInputSignin').val();
         //var password = $('#passwordInputSignin').val();
         //event.preventDefault();
-	alert("into handle.")
+	alert("into handle.");
 	window.location.href = 'homepage.html';
         //signin(email, password,
             //function signinSuccess() {
