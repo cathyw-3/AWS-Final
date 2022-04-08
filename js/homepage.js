@@ -35,10 +35,10 @@ function tablestr(num){
 		if (i < strs.length) {
 			var str = '';
 			var id = strs[i].flatid;
-			alert(id);
 			str+='<td>'+strs[i].flatid+'</td>';
 			str+='<td>'+strs[i].clike+'</td>';
 			var temp1 = '<input type="button" value="love" onclick="handleLove('+id+')"/>';
+			alert(temp1);
 			str+='<td>'+temp1+'</td>';
 			str_arr[i-num1] = str;
 		}
