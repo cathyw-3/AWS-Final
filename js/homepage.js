@@ -3,6 +3,7 @@ var strs = [];
 
 function get_data(userid, data) {
 	strs = data;
+	//var userid = location.search.match(new RegExp("[\?\&]email=([^\&]+)", "i"))[1];
 	alert(userid);
 }
 
