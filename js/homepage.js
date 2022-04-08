@@ -146,7 +146,7 @@ function scanData() {
         // }
     };
 
-    return docClient.scan(params).promise();
+    return await docClient.scan(params).promise();
 
     //function onScan(err, data) {
         //if (err) {
