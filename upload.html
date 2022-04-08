@@ -146,7 +146,7 @@
 
 		success: function() {
 			var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
-			window.location.href='homepage.html?=userid'+userid;	
+			window.location.href='homepage.html?userid='+userid;
 		},
 	        error: function() {
 	    	    	location.reload();
