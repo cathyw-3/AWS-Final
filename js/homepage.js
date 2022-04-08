@@ -1,8 +1,9 @@
 var len = 3;
 var strs = [];
 
-function get_data(data) {
+function get_data(userid, data) {
 	strs = data;
+	alert(userid);
 }
 
 function limits(){

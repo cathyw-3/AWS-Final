@@ -106,15 +106,14 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript">
-		var API_URL = 'https://bzhm0jyrlc.execute-api.us-east-1.amazonaws.com/wrDBtest'
+		var API_URL = 'https://bzhm0jyrlc.execute-api.us-east-1.amazonaws.com/wrDBtest';
+		var userid = location.search.match(new RegExp("[\?\&]email=([^\&]+)", "i"))[1];
 		$(document).ready(function() {
 	    		$.ajax({
 	        		type: 'GET',
 	        		url: API_URL+'/wrdbtest',
 	        		success: function(data) {
-					userid = location.search.match(new RegExp("[\?\&]email=([^\&]+)", "i"))[1];
-					alert(userid);
-					get_data(data.Items);
+					get_data(userid, data.Items);
 					limits();
 					document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
 					tablestr(1);
