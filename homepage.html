@@ -75,10 +75,6 @@
 <form class="header">
 	<h1>Flat Advisor</h1>
 </form>
-<script type="text/javascript">
-	var API_URL = 'https://bzhm0jyrlc.execute-api.us-east-1.amazonaws.com/wrDBtest';
-	var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
-</script>
 	<form class="navbar">
 		<input type="button" id="upload" value="Upload Your Flat Here!" onclick="window.location.href='upload.html'"/>
 		<input type="button" id="filterLikes" value="Filter as Most Likes"/>
@@ -110,6 +106,8 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript">
+		var API_URL = 'https://bzhm0jyrlc.execute-api.us-east-1.amazonaws.com/wrDBtest';
+		var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
 		$(document).ready(function() {
 	    		$.ajax({
 	        		type: 'GET',
@@ -124,6 +122,8 @@
         	});
 		
 		$('#filterLikes').on('click', function() {
+			var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
+			alert(userid);
 	    		window.location.href='filterLikes.html?userid='+userid;
 		});
 	</script>
