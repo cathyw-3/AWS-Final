@@ -33,9 +33,9 @@ function tablestr(num){
 	document.getElementById("table3").innerHTML='';
 	for(var i=num1;i<num2;i++){
 		var str = '';
-		var id = strs[i].date.N;
-		str+='<td>'+strs[i].date.N+'</td>';
-		str+='<td>'+strs[i].message.S+'</td>';
+		var id = strs[i].flatid;
+		str+='<td>'+strs[i].floor_size+'</td>';
+		str+='<td>'+strs[i].furnishing+'</td>';
 		var temp1 = '<input type="button" value="love" onclick="handleLove('+id+')"/>';
 		str+='<td>'+temp1+'</td>';
 		str_arr[i-num1] = str;
