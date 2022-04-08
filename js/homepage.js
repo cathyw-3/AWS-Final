@@ -37,7 +37,7 @@ function tablestr(num){
 			var id = strs[i].flatid;
 			str+='<td>'+strs[i].flatid+'</td>';
 			str+='<td>'+strs[i].clike+'</td>';
-			var temp1 = '<input type="button" value="love" onclick="handleLove('+id+')"/>';
+			var temp1 = '<input type="button" value="love" onclick="handleLove("'+id+'")"/>';
 			alert(temp1);
 			str+='<td>'+temp1+'</td>';
 			str_arr[i-num1] = str;
