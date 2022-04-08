@@ -102,25 +102,62 @@
 	<h1> Upload Your Flat Information</h1>
 
 
-		<label for="info1"> Flat Information 1 </label>
+		<label for="info1"> flatid </label>
 		<textarea id="info1"></textarea>
                                 <br/>
 
-		<label for="info2"> Flat Information 2 </label>
+		<label for="info2"> flattype </label>
 		<textarea id="info2"></textarea>
                                 <br/>
 
-		<label for="info3"> Flat Information 3 </label>
+		<label for="info3"> location </label>
 		<textarea id="info3"></textarea>
                                 <br/>
 
-		<label for="info4"> Flat Information n </label>
+		<label for="info4"> level </label>
 		<textarea id="info4"></textarea>  
+                                <br/>
+
+		<label for="info5"> floor_size </label>
+		<textarea id="info5"></textarea>  
+                                <br/>
+
+		<label for="info6"> furnishing </label>
+		<textarea id="info6"></textarea>  
+                                <br/>
+
+		<label for="info7"> price </label>
+		<textarea id="info7"></textarea>  
                                 <br/>
 
 		<button id="handleUpload"> Upload </button>
 
 </form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript">
+	var API_URL = 'https://bzhm0jyrlc.execute-api.us-east-1.amazonaws.com/wrDBtest';
+	var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
+	$('#handleUpload').on('click', function() {
+	    $.ajax({
+	        type: 'POST',
+		//data: {"message": "alert test 2."},
+	        data: JSON.stringify({"flatid": $('#info1').val(), "flattype": $('#info2').val(), "location": $('#info3').val(), "level": $('#info4').val(), "floor_size": $('info5').val(), "furnishing": $('#info6').val(), "price": $('#info7').val()}),
+		url: API_URL+'/wrdbtest',
+		contentType: "application/json",
+
+		success: function() {
+			window.location.href='homepage.html'+userid;	
+		},
+	        fail: function() {
+	    	    	location.reload();
+	        }
+	    });
+	    return false;
+	});
+</script>
+<script src="js/cognito-auth.js"></script>
+<script src="js/homepage.js"></script>
 
 </body>
 </html>
