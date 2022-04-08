@@ -4,6 +4,7 @@ var WildRydes = window.WildRydes || {};
 
 (function scopeWrapper($) {
     var signinUrl = '/signin.html';
+    var username = 'username';
 
     var poolData = {
         UserPoolId: _config.cognito.userPoolId,
@@ -122,6 +123,7 @@ var WildRydes = window.WildRydes || {};
             function signinSuccess() {
                 console.log('Successfully Logged In');
 		//sign in our main homepage, test.html is for test, you can change anytime.
+		username = email;
                 window.location.href = 'homepage.html';
             },
             function signinError(err) {
