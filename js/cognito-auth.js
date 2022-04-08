@@ -124,8 +124,9 @@ var WildRydes = window.WildRydes || {};
                 console.log('Successfully Logged In');
 		//sign in our main homepage, test.html is for test, you can change anytime.
 		username = email;
-                window.location.href = 'homepage.html';
+                window.location.href = 'homepage.html?userid='+email;
             },
+
             function signinError(err) {
                 alert(err);
             }
