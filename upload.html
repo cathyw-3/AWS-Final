@@ -137,19 +137,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript">
 	var API_URL = 'https://bzhm0jyrlc.execute-api.us-east-1.amazonaws.com/wrDBtest';
-	var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
 	$('#handleUpload').on('click', function() {
 	    $.ajax({
 	        type: 'POST',
-		//data: {"message": "alert test 2."},
 	        data: JSON.stringify({"flatid": $('#info1').val(), "flattype": $('#info2').val(), "location": $('#info3').val(), "level": $('#info4').val(), "floor_size": $('info5').val(), "furnishing": $('#info6').val(), "price": $('#info7').val()}),
 		url: API_URL+'/wrdbtest',
 		contentType: "application/json",
 
 		success: function() {
-			window.location.href='homepage.html'+userid;	
+			var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
+			window.location.href='homepage.html?=userid'+userid;	
 		},
-	        fail: function() {
+	        error: function() {
 	    	    	location.reload();
 	        }
 	    });
