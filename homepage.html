@@ -112,6 +112,7 @@
 	        		type: 'GET',
 	        		url: API_URL+'/wrdbtest',
 	        		success: function(data) {
+					alert(username);
 					get_data(data.Items);
 					limits();
 					document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
@@ -120,6 +121,7 @@
 	    		});
         	});
 	</script>
+	<script src="js/cognito-auth.js"></script>
 	<script src="js/homepage.js"></script>
 
 
