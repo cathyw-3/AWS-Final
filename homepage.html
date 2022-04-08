@@ -76,10 +76,10 @@
 	<h1>Flat Advisor</h1>
 </form>
 	<form class="navbar">
-		<input type="button" value="Upload Your Flat Here!" onclick="window.location.href='upload.html'"/>
-		<input type="button" value="Filter as Most Likes"/>
-	<input type="button" value="Filter as Your Preference"/>
-	<input type="button" value="User History Records" onclick="window.location.href='user.html'"/>
+		<input type="button" id="upload" value="Upload Your Flat Here!" onclick="window.location.href='upload.html'"/>
+		<input type="button" id="filterLikes" value="Filter as Most Likes"/>
+		<input type="button" id="filterReference" value="Filter as Your Preference"/>
+		<input type="button" id="history" value="User History Records" onclick="window.location.href='user.html'"/>
 	</form>
 
 	<form class="all">
@@ -120,6 +120,23 @@
 	        		}
 	    		});
         	});
+		
+		$('#filterLikes').on('click', function() {
+	    		$.ajax({
+	        		type: 'GET',
+				url: API_URL+'/wrdbtest',
+
+	        		success: function(data) {
+					data.Items.sort(function(a, b){
+              					return b.clike - a.clike;
+            				});
+	    	    			get_data(userid, data.Items);
+					limits();
+					document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
+					tablestr(1);
+	        		}
+	    		});
+		});
 	</script>
 	<script src="js/cognito-auth.js"></script>
 	<script src="js/homepage.js"></script>
