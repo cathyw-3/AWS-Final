@@ -117,18 +117,18 @@ var WildRydes = window.WildRydes || {};
     function handleSignin(event) {
         var email = $('#emailInputSignin').val();
         var password = $('#passwordInputSignin').val();
-	alert(password);
         event.preventDefault();
-        signin(email, password,
-            function signinSuccess() {
-                console.log('Successfully Logged In');
+	window.location.href = 'homepage.html';
+        //signin(email, password,
+            //function signinSuccess() {
+                //console.log('Successfully Logged In');
 		//sign in our main homepage, test.html is for test, you can change anytime.
-                window.location.href = 'homepage.html';
-            },
-            function signinError(err) {
-                alert(err);
-            }
-        );
+                //window.location.href = 'homepage.html';
+            //},
+            //function signinError(err) {
+                //alert(err);
+            //}
+        //);
     }
 
     function handleRegister(event) {
