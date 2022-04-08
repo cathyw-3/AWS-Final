@@ -150,7 +150,7 @@ function scanData() {
     function onScan(err, data) {
         if (err) {
             // document.getElementById('textarea').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
-            console.log("Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2));
+            alert("Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2));
         } else {
             console.log("Scan succeeded: ");
             // sort clike
