@@ -35,6 +35,7 @@ function tablestr(num){
 		if (i < strs.length) {
 			var str = '';
 			var id = strs[i].flatid;
+			alert(id);
 			str+='<td>'+strs[i].flatid+'</td>';
 			str+='<td>'+strs[i].clike+'</td>';
 			var temp1 = '<input type="button" value="love" onclick="handleLove('+id+')"/>';
@@ -52,6 +53,6 @@ function liminputcolor(choose){
  document.getElementById("inputs").childNodes[choose-1].style.backgroundColor="red";
 }
 
-function handleLove(userid) {
-	alert(userid);
+function handleLove(id) {
+	alert(id);
 }
