@@ -118,12 +118,12 @@ var WildRydes = window.WildRydes || {};
     function handleSignin(event) {
         var email = $('#emailInputSignin').val();
         var password = $('#passwordInputSignin').val();
+	username = email;
         event.preventDefault();
         signin(email, password,
             function signinSuccess() {
                 console.log('Successfully Logged In');
 		//sign in our main homepage, test.html is for test, you can change anytime.
-		username = email;
                 window.location.href = 'homepage.html';
             },
             function signinError(err) {
