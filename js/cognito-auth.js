@@ -4,7 +4,6 @@ var WildRydes = window.WildRydes || {};
 
 (function scopeWrapper($) {
     var signinUrl = '/signin.html';
-    var username = 'username';
 
     var poolData = {
         UserPoolId: _config.cognito.userPoolId,
@@ -118,7 +117,6 @@ var WildRydes = window.WildRydes || {};
     function handleSignin(event) {
         var email = $('#emailInputSignin').val();
         var password = $('#passwordInputSignin').val();
-	username = email;
         event.preventDefault();
         signin(email, password,
             function signinSuccess() {
