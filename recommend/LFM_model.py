@@ -72,7 +72,7 @@ def print_latent_factors(file, P, Q):
     with open(file, 'w', encoding='utf-8') as f:
         f.write(json.dumps(records))
 
-def lambda_handler(event, context):
+def main():
     # get the user and item list
     # TODO
     users = ['1', '2']
@@ -91,6 +91,7 @@ def lambda_handler(event, context):
     records = [['1', '1', 4]]
 
     # initialization
+    P, Q = {}, {}
     for user in users:
         if user not in P.keys():
             P[user] = [1/F for i in range(F)]
@@ -120,3 +121,6 @@ def lambda_handler(event, context):
         'statusCode': 200,
         'body': json.dumps('Hello from Lambda!')
     }
+
+if __name__ == '__main__':
+    main()
