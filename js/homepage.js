@@ -146,19 +146,19 @@ function scanData() {
         // }
     };
 
-    docClient.scan(params, onScan);
+    return docClient.scan(params).promise();
 
-    function onScan(err, data) {
-        if (err) {
+    //function onScan(err, data) {
+        //if (err) {
             // document.getElementById('textarea').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
-            alert("Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2));
-        } else {
-            console.log("Scan succeeded: ");
+            //alert("Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2));
+        //} else {
+            //console.log("Scan succeeded: ");
             // sort clike
-            data.Items.sort(function(a, b){
-              return b.clike - a.clike;
-            });
-	    return data.Items
+            //data.Items.sort(function(a, b){
+              //return b.clike - a.clike;
+            //});
+	    //return data.Items;
 
             //data.Items.forEach(function(flat) {
                 // document.getElementById('textarea').innerHTML += movie.year + ": " + movie.title + " - rating: " + movie.info.rating + "\n";
@@ -170,8 +170,8 @@ function scanData() {
             // document.getElementById('textarea').innerHTML += "Scanning for more..." + "\n";
             // params.ExclusiveStartKey = data.LastEvaluatedKey;
             // docClient.scan(params, onScan);
-        }
-    }
+        //}
+    //}
 }
 function scan_button()
 {
