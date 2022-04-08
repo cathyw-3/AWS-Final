@@ -35,8 +35,8 @@ function tablestr(num){
 		if (i < strs.length) {
 			var str = '';
 			var id = strs[i].flatid;
-			str+='<td>'+strs[i].floor_size+'</td>';
-			str+='<td>'+strs[i].furnishing+'</td>';
+			str+='<td>'+strs[i].flatid+'</td>';
+			str+='<td>'+strs[i].clike+'</td>';
 			var temp1 = '<input type="button" value="love" onclick="handleLove('+id+')"/>';
 			str+='<td>'+temp1+'</td>';
 			str_arr[i-num1] = str;
