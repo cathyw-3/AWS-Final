@@ -111,7 +111,7 @@
 		
             				success: async (data) => {
 						if(data.Items.length > 0) {
-							all_flat.push(data.Items[0]);
+							await all_flat.push(data.Items[0]);
 						}
 					}
 				});
