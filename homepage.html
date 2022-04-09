@@ -137,7 +137,7 @@
 			//var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
 	    		//window.location.href='filterLikes.html?userid='+userid;
 			$.ajax({
-				type: 'GET',
+				type: 'POST',
                 		url: "https://4pc2qv9314.execute-api.us-east-1.amazonaws.com/userlove/userlove",
     				data: JSON.stringify({"user_id": "8", "flat_id": "2"}),
        				contentType: 'application/json',
