@@ -109,12 +109,13 @@
 		function handleLove(id, flat_id) {
 			$.ajax({
 				type: 'POST',
-                		url: "https://4pc2qv9314.execute-api.us-east-1.amazonaws.com/userlove/userlove",
-    				data: JSON.stringify({"user_id": id, "flat_id": flat_id}),
+                		url: "https://hbczqj1lp8.execute-api.us-east-1.amazonaws.com/updatedb/updatedb",
+    				data: JSON.stringify({"userid": id, "flatid": flat_id}),
        				contentType: 'application/json',
 		
-            			success: function(data) {
-					alert(data.Items.length);		
+            			success: function() {
+					//alert("success");
+					window.location.href='homepage.html?userid='+id;	
 				}
         		});
 		}
@@ -143,6 +144,10 @@
 		$('#upload').on('click', function() {
 			var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
 	    		window.location.href='upload.html?userid='+userid;
+		});
+		$('#history').on('click', function() {
+			var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
+	    		window.location.href='user.html?userid='+userid;
 		});
 	</script>
 	<script src="js/cognito-auth.js"></script>
