@@ -37,7 +37,7 @@ function tablestr(num){
 			var id = strs[i].flatid;
 			str+='<td>'+strs[i].flatid+'</td>';
 			str+='<td>'+strs[i].clike+'</td>';
-			var temp1 = "<input type=\"button\" value=\"love\" onclick='handleLove(\""+id+"\")'/>";
+			var temp1 = "<input type=\"button\" value=\"love\" onclick='handleLove(\""+userid+"\",\""+id+"\")'/>";
 			alert(temp1);
 			str+='<td>'+temp1+'</td>';
 			str_arr[i-num1] = str;
@@ -53,7 +53,7 @@ function liminputcolor(choose){
  document.getElementById("inputs").childNodes[choose-1].style.backgroundColor="red";
 }
 
-function handleLove(id) {
+function handleLove(id, flat_id) {
 	AWS.config.update({
       		region: "us-east-1",
       		endpoint: 'https://dynamodb.us-east-1.amazonaws.com',
@@ -64,6 +64,7 @@ function handleLove(id) {
     	var docClient = new AWS.DynamoDB.DocumentClient();
 	
 	var table = "User";
+	alert(table);
 
       	var orilove;
       	var params = {
@@ -73,10 +74,10 @@ function handleLove(id) {
               		"#userid": "userid"
           	},
           	ExpressionAttributeValues: {
-              		":id":"8"
+              		":id": id
           	}
       	};
 
 	var data = docClient.query(params).Items;
-	alert(data.userid)
+	alert(data.userid);
 }
