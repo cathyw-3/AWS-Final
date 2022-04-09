@@ -128,7 +128,6 @@
             			success: function(data) {
 					if (data.Items.length > 0) {
 						getallflat(data.Items[0].love);
-						alert(all_flat.length);
 						get_data(userid, all_flat);	
 						limitshistory();
 						document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
