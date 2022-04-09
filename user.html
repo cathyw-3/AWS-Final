@@ -125,7 +125,7 @@
     				data: JSON.stringify({"user_id": "8", "flat_id": "0"}),
        				contentType: 'application/json',
 		
-            			success: function(data) => {
+            			success: function(data) {
 					alert(data.length);
 					if (data.length > 0) {
 						get_data(userid, data);
