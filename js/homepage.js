@@ -77,7 +77,6 @@ function tablehistory(num){
 			var flat_id = strs[i].flatid;
 			str+='<td>'+strs[i].flatid+'</td>';
 			str+='<td>'+strs[i].clike+'</td>';
-			str+='<td>'+temp1+'</td>';
 			str_arr[i-num1] = str;
 		}
  	}
