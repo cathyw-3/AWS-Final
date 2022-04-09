@@ -110,7 +110,7 @@
 			$.ajax({
 				type: 'POST',
                 		url: "https://hbczqj1lp8.execute-api.us-east-1.amazonaws.com/updatedb/updatedb",
-    				data: JSON.stringify({"user_id": id, "flat_id": flat_id}),
+    				data: JSON.stringify({"userid": id, "flatid": flat_id}),
        				contentType: 'application/json',
 		
             			success: function() {
