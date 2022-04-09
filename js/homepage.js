@@ -94,7 +94,24 @@ function tablehistory(num){
 			var str = '';
 			var flat_id = strs[i].flatid;
 			str+='<tr><td>'+'flat id: '+'</td>';
-			str+='<td>'+strs[i].flatid+'</td></tr>';
+			str+='<td>'+strs[i].flatid+'</td>';
+			str+='<td> flat type: </td>';
+			str+='<td>'+strs[i].flattype+'</td>';
+
+			str+='<td> Location: </td>';
+			str+='<td>'+strs[i].location_+'</td>';
+
+			str+='<td>'+'flat level: '+'</td>';
+			str+='<td>'+strs[i].level_+' </td>';
+			str+='<td> floor size: </td>';
+			str+='<td>'+strs[i].floor_size+'</td></tr>';
+			str+='<tr><td>'+'Furnished or not: '+'</td>';
+			str+='<td>'+strs[i].furnishing+' </td>';
+			str+='<td> Price: </td>';
+			str+='<td>'+strs[i].price+'</td></tr>';
+			
+			str+='<td>Likes: </td>';
+			str+='<td>'+strs[i].clike+'</td></tr>';
 			str_arr[i-num1] = str;
 		}
  	}
