@@ -102,6 +102,7 @@
 	<script type="text/javascript">
 		var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
 		$(document).ready(function() {
+			alert("into ready");
 	    		$.ajax({
 	        		type: 'POST',
                 		url: "https://4pc2qv9314.execute-api.us-east-1.amazonaws.com/userlove/userlove",
@@ -109,6 +110,7 @@
        				contentType: 'application/json',
 		
             			success: function(data) {
+					alert(userid);
 					alert(data.Items.love.length);	
 					get_data(userid, data.Items.love);	
 					limitshistory();
