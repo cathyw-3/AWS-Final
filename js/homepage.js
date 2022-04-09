@@ -63,7 +63,7 @@ function handleLove(id, flat_id) {
     	});
     	var dynamodb = new AWS.DynamoDB();
     	var docClient = new AWS.DynamoDB.DocumentClient();
-	
+	alert("AWS set up.");
 	var table = "User";
 	alert(table);
 
