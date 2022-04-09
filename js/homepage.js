@@ -31,6 +31,7 @@ function tablestr(num){
 	document.getElementById("table1").innerHTML='';
 	document.getElementById("table2").innerHTML='';
 	document.getElementById("table3").innerHTML='';
+	userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
 	for(var i=num1;i<num2;i++){
 		if (i < strs.length) {
 			var str = '';
@@ -54,6 +55,7 @@ function liminputcolor(choose){
 }
 
 function handleLove(id, flat_id) {
+	alert(into handle);
 	AWS.config.update({
       		region: "us-east-1",
       		endpoint: 'https://dynamodb.us-east-1.amazonaws.com',
