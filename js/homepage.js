@@ -1,3 +1,5 @@
+import AWS from 'aws-sdk'
+
 var len = 3;
 var strs = [];
 var user_id = 'admin';
@@ -54,8 +56,6 @@ function liminputcolor(choose){
 }
 
 function handleLove(id, flat_id) {
-	alert("into handle");
-	const AWS = require('https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js');
 	alert("require success");
 	AWS.config.update({
       		region: "us-east-1",
@@ -63,6 +63,7 @@ function handleLove(id, flat_id) {
       		accessKeyId: "AKIASOPIXUSO34GCI4DP",
       		secretAccessKey: "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"
     	});
+	alert("config success");
     	var dynamodb = new AWS.DynamoDB();
     	var docClient = new AWS.DynamoDB.DocumentClient();
 	alert("AWS set up.");
