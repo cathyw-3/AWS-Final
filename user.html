@@ -76,19 +76,19 @@
     <form class="box">
 	<h1> Favorites</h1>
 		<table frame="box" id="history1">
-			<td> flat info 1 </td>
+			
 
 		</table>
 		<p></P>
 		<p></p>
 		<table frame="box" id="history2">
-			<td> flat info 2 </td>
+			
 
 		</table>
 		<p></P>
 		<p></p>
 		<table frame="box" id="history3">
-			<td> flat info 3 </td>
+			
 		</table>
 		<p></P>
 		<p></p>
@@ -98,5 +98,28 @@
 		</div>
 	</form>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
+		$(document).ready(function() {
+	    		$.ajax({
+	        		type: 'POST',
+                		url: "https://4pc2qv9314.execute-api.us-east-1.amazonaws.com/userlove/userlove",
+    				data: JSON.stringify({"user_id": userid, "flat_id": "0"}),
+       				contentType: 'application/json',
+		
+            			success: function(data) {
+					alert(data.Items.love.length);	
+					get_data(userid, data.Items.love);	
+					limitshistory();
+					document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
+					tablehistory(1);
+				}
+	    		});
+        	});
+
+	</script>
+	<script src="js/cognito-auth.js"></script>
+	<script src="js/homepage.js"></script>
 </body>
 </html>
