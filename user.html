@@ -100,7 +100,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript">
-		function getallflat(love_arr) {
+		async function getallflat(love_arr) {
 			var all_flat = new Array();
 			for(var j=0;j<love_arr.length;++j) {
 				$.ajax({
@@ -119,7 +119,7 @@
 			return all_flat;
 		}
 		var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
-		$(document).ready(function = async () => {
+		$(document).ready(async function() {
 	    		$.ajax({
 	        		type: 'POST',
                 		url: "https://4pc2qv9314.execute-api.us-east-1.amazonaws.com/userlove/userlove",
