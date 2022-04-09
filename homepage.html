@@ -79,7 +79,7 @@
 		<input type="button" id="upload" value="Upload Your Flat Here!"/>
 		<input type="button" id="filterLikes" value="Filter as Most Likes"/>
 		<input type="button" id="filterReference" value="Filter as Your Preference"/>
-		<input type="button" id="history" value="User History Records" onclick="window.location.href='user.html'"/>
+		<input type="button" id="history" value="User History Records"/>
 	</form>
 
 	<form class="all">
@@ -140,6 +140,10 @@
 		$('#upload').on('click', function() {
 			var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
 	    		window.location.href='upload.html?userid='+userid;
+		});
+		$('#history').on('click', function() {
+			var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
+	    		window.location.href='user.html?userid='+userid;
 		});
 	</script>
 	<script src="js/cognito-auth.js"></script>
