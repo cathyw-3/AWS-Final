@@ -51,10 +51,12 @@ function tablestr(num){
 		if (i < strs.length) {
 			var str = '';
 			var flat_id = strs[i].flatid;
-			str+='<td>'+strs[i].flatid+'</td>';
-			str+='<td>'+strs[i].clike+'</td>';
+			str+='<tr><td>'+'flat id: '+'</td>';
+			str+='<td>'+strs[i].flatid+' </td></tr>';
+			str+='<tr><td> flat type: </td>';
+			str+='<td>'+strs[i].flattype+'</td></tr>';
 			var temp1 = "<input type=\"button\" value=\"love\" onclick='handleLove(\""+user_id+"\",\""+flat_id+"\")'/>";
-			str+='<td>'+temp1+'</td>';
+			str+='<tr><td>'+temp1+'</td></tr>';
 			str_arr[i-num1] = str;
 		}
  	}
@@ -75,8 +77,8 @@ function tablehistory(num){
 		if (i < strs.length) {
 			var str = '';
 			var flat_id = strs[i].flatid;
-			str+='<td>'+strs[i].flatid+'</td>';
-			str+='<td>'+strs[i].clike+'</td>';
+			str+='<tr><td>'+'flat id: '+'</td>';
+			str+='<td>'+strs[i].flatid+'</td></tr>';
 			str_arr[i-num1] = str;
 		}
  	}
