@@ -109,7 +109,7 @@
     					data: JSON.stringify({"flatid": love_arr[j]}),
        					contentType: 'application/json',
 		
-            				success: function(data) => {
+            				success: function(data) {
 						if(data.Items.length > 0) {
 							all_flat.push(data.Items[0]);
 						}
