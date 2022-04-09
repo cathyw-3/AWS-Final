@@ -127,7 +127,7 @@
 		
             			success: async (data) => {
 					if (data.Items.length > 0) {
-						await getallflat(data.Items[0].love);
+						await getallflat(data.Items[0].love).ConfigureAwait(false);
 						alert(all_flat.length);
 						get_data(userid, all_flat);
 						limits();
