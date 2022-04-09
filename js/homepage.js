@@ -53,7 +53,7 @@ function liminputcolor(choose){
  document.getElementById("inputs").childNodes[choose-1].style.backgroundColor="red";
 }
 
-function handleLove(id, flat_id) {
+function handleLove(id) {
 	AWS.config.update({
       		region: "us-east-1",
       		endpoint: 'https://dynamodb.us-east-1.amazonaws.com',
@@ -73,7 +73,7 @@ function handleLove(id, flat_id) {
               		"#userid": "userid"
           	},
           	ExpressionAttributeValues: {
-              		":id":userid
+              		":id":"8"
           	}
       	};
 
