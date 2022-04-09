@@ -125,15 +125,13 @@
     				data: JSON.stringify({"user_id": "8", "flat_id": "0"}),
        				contentType: 'application/json',
 		
-            			success: async (data) => {
-					alert(data.Items.length);
-					if (data.Items.length > 0) {
-						getallflat(data.Items[0].love);
-						alert(all_flat.length);
-						get_data(userid, all_flat);
-						limits();
+            			success: function(data) => {
+					alert(data.length);
+					if (data.length > 0) {
+						get_data(userid, data);
+						limitshistory();
 						document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
-						tablestr(1);
+						tablehistory(1);
 					}
 				}
 	    		});
