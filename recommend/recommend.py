@@ -3,22 +3,18 @@ from User import User
 from datetime import datetime, timezone, timedelta
 from DynamoDBService import DynamoDBService
 import urllib
+import boto3
 
 import numpy as np
 import pandas as pd
 
 
 def get_latent_factors(records):
-    P, Q = {}, {}
+    P = {}
     for record in records:
         vector = record['vector'].split(' ')
-        vector = [int(x) for x in vector]
-        if record['type'] == "user":
-            vector = record
-            P[record['id']]  = vector
-        if record['type'] == "item":
-            Q[record['id']]  = vector
-    return P, Q
+        P[record['id']] = [float(x) for x in vector]
+    return P
 
 
 def recommend_top_k(p, Q, k):
@@ -51,22 +47,26 @@ def lambda_handler(event, context):
     # as_list = json.loads(original_object)
     # P, Q = get_latent_factors(as_list)
 
-    # build the latent factors dictionary
-    # P = get_latent_factors('user_latent_factor.txt')
-    # Q = get_latent_factors('item_latent_factor.txt')
 
     # get S3 bucket
-    bucket = event['Records'][0]['s3']['bucket']['name']
-    key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
+    s3 = boto3.client('s3')
+    bucket = event['S3']['name']
+    # user latent factors
+    key = urllib.parse.unquote_plus(event['S3']['key1'], encoding='utf-8')
     response = s3.get_object(Bucket=bucket, Key=key)
     doc = json.loads(response)
-    P, Q = get_latent_factors(doc)
+    P = get_latent_factors(doc)
+    # item latent factors
+    key = urllib.parse.unquote_plus(event['S3']['key2'], encoding='utf-8')
+    response = s3.get_object(Bucket=bucket, Key=key)
+    doc = json.loads(response)
+    Q = get_latent_factors(doc)
 
     # get the user latent factor
     if userID in P.keys():
         p = P[userID]
     else:
-        F = 32
+        F = 24
         p = [1 / F for i in range(F)]
 
     # recommend
