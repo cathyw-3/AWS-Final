@@ -119,7 +119,7 @@
 			return all_flat;
 		}
 		var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
-		$(document).ready(async () => {
+		$(document).ready(function() => {
 	    		$.ajax({
 	        		type: 'POST',
                 		url: "https://4pc2qv9314.execute-api.us-east-1.amazonaws.com/userlove/userlove",
