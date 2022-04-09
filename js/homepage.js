@@ -55,7 +55,7 @@ function liminputcolor(choose){
 
 function handleLove(id, flat_id) {
 	alert("into handle");
-	const AWS = require('aws-sdk');
+	const AWS = require('https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js');
 	alert("require success");
 	AWS.config.update({
       		region: "us-east-1",
