@@ -1,5 +1,3 @@
-import AWS from 'aws-sdk'
-
 var len = 3;
 var strs = [];
 var user_id = 'admin';
@@ -56,32 +54,14 @@ function liminputcolor(choose){
 }
 
 function handleLove(id, flat_id) {
-	alert("require success");
-	AWS.config.update({
-      		region: "us-east-1",
-      		endpoint: 'https://dynamodb.us-east-1.amazonaws.com',
-      		accessKeyId: "AKIASOPIXUSO34GCI4DP",
-      		secretAccessKey: "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"
-    	});
-	alert("config success");
-    	var dynamodb = new AWS.DynamoDB();
-    	var docClient = new AWS.DynamoDB.DocumentClient();
-	alert("AWS set up.");
-	var table = "User";
-	alert(table);
-
-      	var orilove;
-      	var params = {
-        	TableName : "User",
-          	KeyConditionExpression: "#userid = :id",
-          	ExpressionAttributeNames:{
-              		"#userid": "userid"
-          	},
-          	ExpressionAttributeValues: {
-              		":id": id
-          	}
-      	};
-
-	var data = docClient.query(params).Items;
-	alert(data.userid);
+	$.ajax({
+		method: 'GET',
+                url: "https://4pc2qv9314.execute-api.us-east-1.amazonaws.com/userlove/userlove",
+    		data: data: JSON.stringify({"user_id": id, "flat_id": flat_id}),
+       		contentType: 'application/json',
+		
+            	success: function(data) {
+			alert(data.Items.length);		
+		}
+        });
 }
