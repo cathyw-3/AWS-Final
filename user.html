@@ -128,7 +128,7 @@
 		
             			success: function(data) {
 					if (data.Items.length > 0) {
-						var flat_love = await getallflat(data.Items[0].love);
+						var flat_love = getallflat(data.Items[0].love);
 						alert(flat_love.length);
 						get_data(userid, flat_love);
 						limits();
