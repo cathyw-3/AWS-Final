@@ -1,10 +1,10 @@
 var len = 3;
 var strs = [];
-var userid = 'admin';
+var user_id = 'admin';
 
-function get_data(user_id, data) {
+function get_data(id, data) {
 	strs = data;
-	userid = user_id;
+	user_id = id;
 }
 
 function limits(){
@@ -31,14 +31,13 @@ function tablestr(num){
 	document.getElementById("table1").innerHTML='';
 	document.getElementById("table2").innerHTML='';
 	document.getElementById("table3").innerHTML='';
-	userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
 	for(var i=num1;i<num2;i++){
 		if (i < strs.length) {
 			var str = '';
-			var id = strs[i].flatid;
+			var flat_id = strs[i].flatid;
 			str+='<td>'+strs[i].flatid+'</td>';
 			str+='<td>'+strs[i].clike+'</td>';
-			var temp1 = "<input type=\"button\" value=\"love\" onclick='handleLove(\""+userid+"\",\""+id+"\")'/>";
+			var temp1 = "<input type=\"button\" value=\"love\" onclick='handleLove(\""+user_id+"\",\""+flat_id+"\")'/>";
 			alert(temp1);
 			str+='<td>'+temp1+'</td>';
 			str_arr[i-num1] = str;
@@ -55,7 +54,7 @@ function liminputcolor(choose){
 }
 
 function handleLove(id, flat_id) {
-	alert(into handle);
+	alert("into handle");
 	AWS.config.update({
       		region: "us-east-1",
       		endpoint: 'https://dynamodb.us-east-1.amazonaws.com',
