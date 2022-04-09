@@ -54,15 +54,15 @@ function liminputcolor(choose){
 }
 
 function handleLove(id, flat_id) {
-	const AWS = require('aws-sdk');
-	AWS.config.update({
+	var AWS1 = require('aws-sdk');
+	AWS1.config.update({
       		region: "us-east-1",
       		endpoint: 'https://dynamodb.us-east-1.amazonaws.com',
       		accessKeyId: "AKIASOPIXUSO34GCI4DP",
       		secretAccessKey: "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"
     	});
-    	var dynamodb = new AWS.DynamoDB();
-    	var docClient = new AWS.DynamoDB.DocumentClient();
+    	var dynamodb = new AWS1.DynamoDB();
+    	var docClient = new AWS1.DynamoDB.DocumentClient();
 	alert("AWS set up.");
 	var table = "User";
 	alert(table);
