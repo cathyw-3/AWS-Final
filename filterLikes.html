@@ -76,8 +76,8 @@
 	<h1>Flat Advisor</h1>
 </form>
 	<form class="navbar">
-		<input type="button" id="upload" value="Upload Your Flat Here!" onclick="window.location.href='upload.html'"/>
-		<input type="button" id="filterLikes" value="Filter as Most Likes" onclick="window.location.href='filterLikes.html'"/>
+		<input type="button" id="upload" value="Upload Your Flat Here!"/>
+		<input type="button" id="filterLikes" value="Filter as Most Likes"/>
 		<input type="button" id="filterReference" value="Filter as Your Preference"/>
 		<input type="button" id="history" value="User History Records" onclick="window.location.href='user.html'"/>
 	</form>
@@ -106,6 +106,18 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript">
+		function handleLove(id, flat_id) {
+			$.ajax({
+				type: 'POST',
+                		url: "https://4pc2qv9314.execute-api.us-east-1.amazonaws.com/userlove/userlove",
+    				data: JSON.stringify({"user_id": "8", "flat_id": "2"}),
+       				contentType: 'application/json',
+		
+            			success: function(data) {
+					alert(data.Items.length);		
+				}
+        		});
+		}
 		var API_URL = 'https://bzhm0jyrlc.execute-api.us-east-1.amazonaws.com/wrDBtest';
 		var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
 		$(document).ready(function() {
@@ -123,6 +135,15 @@
 	        		}
 	    		});
         	});
+		
+		$('#filterLikes').on('click', function() {
+			var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
+	    		window.location.href='filterLikes.html?userid='+userid;
+		});
+		$('#upload').on('click', function() {
+			var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
+	    		window.location.href='upload.html?userid='+userid;
+		});
 	</script>
 	<script src="js/cognito-auth.js"></script>
 	<script src="js/homepage.js"></script>
@@ -130,3 +151,4 @@
 
 </body>
 </html>
+
