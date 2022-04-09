@@ -100,7 +100,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript">
-		async function getallflat(love_arr) {
+		function getallflat(love_arr) {
 			var all_flat = new Array();
 			for(var j=0;j<love_arr.length;++j) {
 				$.ajax({
@@ -109,9 +109,9 @@
     					data: JSON.stringify({"flatid": love_arr[j]}),
        					contentType: 'application/json',
 		
-            				success: async (data) => {
+            				success: function(data) => {
 						if(data.Items.length > 0) {
-							await all_flat.push(data.Items[0]);
+							all_flat.push(data.Items[0]);
 						}
 					}
 				});
