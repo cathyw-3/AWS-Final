@@ -53,6 +53,30 @@ function liminputcolor(choose){
  document.getElementById("inputs").childNodes[choose-1].style.backgroundColor="red";
 }
 
-function handleLove(id) {
-	alert(id);
+function handleLove(id, flat_id) {
+	AWS.config.update({
+      		region: "us-east-1",
+      		endpoint: 'https://dynamodb.us-east-1.amazonaws.com',
+      		accessKeyId: "AKIASOPIXUSO34GCI4DP",
+      		secretAccessKey: "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"
+    	});
+    	var dynamodb = new AWS.DynamoDB();
+    	var docClient = new AWS.DynamoDB.DocumentClient();
+	
+	var table = "User";
+
+      	var orilove;
+      	var params = {
+        	TableName : "User",
+          	KeyConditionExpression: "#userid = :id",
+          	ExpressionAttributeNames:{
+              		"#userid": "userid"
+          	},
+          	ExpressionAttributeValues: {
+              		":id":userid
+          	}
+      	};
+
+	var data = docClient.query(params).Items;
+	alert(data.userid)
 }
