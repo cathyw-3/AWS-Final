@@ -119,7 +119,7 @@
 			return all_flat;
 		}
 		var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
-		$(document).ready(function = async() => {
+		$(document).ready(function = async () => {
 	    		$.ajax({
 	        		type: 'POST',
                 		url: "https://4pc2qv9314.execute-api.us-east-1.amazonaws.com/userlove/userlove",
@@ -131,9 +131,9 @@
 						var flat_love = await getallflat(data.Items[0].love);
 						alert(flat_love.length);
 						get_data(userid, flat_love);
-						limits();
+						limitshistory();
 						document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
-						tablestr(1);
+						tablehistory(1);
 					}
 				}
 	    		});
