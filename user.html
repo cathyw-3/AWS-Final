@@ -106,16 +106,17 @@
 	    		$.ajax({
 	        		type: 'POST',
                 		url: "https://4pc2qv9314.execute-api.us-east-1.amazonaws.com/userlove/userlove",
-    				data: JSON.stringify({"user_id": userid, "flat_id": "0"}),
+    				data: JSON.stringify({"user_id": "8", "flat_id": "0"}),
        				contentType: 'application/json',
 		
             			success: function(data) {
-					alert(userid);
-					alert(data.Items.love);	
-					get_data(userid, data.Items.love);	
-					limitshistory();
-					document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
-					tablehistory(1);
+					alert(data.Items[0].love.length);
+					if (data.Items.length > 0) {	
+						get_data(userid, data.Items[0].love);	
+						limitshistory();
+						document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
+						tablehistory(1);
+					}
 				}
 	    		});
         	});
