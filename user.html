@@ -75,19 +75,19 @@
 <body>
     <form class="box">
 	<h1> Favorites</h1>
-		<table frame="box" id="history1">
+		<table frame="box" id="table1">
 			
 
 		</table>
 		<p></P>
 		<p></p>
-		<table frame="box" id="history2">
+		<table frame="box" id="table2">
 			
 
 		</table>
 		<p></P>
 		<p></p>
-		<table frame="box" id="history3">
+		<table frame="box" id="table3">
 			
 		</table>
 		<p></P>
@@ -103,7 +103,6 @@
 		function getallflat(love_arr) {
 			var all_flat = new Array();
 			for(var j=0;j<love_arr.length;++j) {
-				alert(love_arr[j]);
 				$.ajax({
 	        			type: 'POST',
                 			url: "https://u10ff29807.execute-api.us-east-1.amazonaws.com/queryflat/queryflat",
@@ -119,7 +118,6 @@
 					}
 				});
 			}
-			alert(all_flat.length);
 			return all_flat;
 		}
 		var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
@@ -132,9 +130,10 @@
 		
             			success: function(data) {
 					if (data.Items.length > 0) {
-						love_flat = getallflat(data.Items[0].love)
+						love_flat = getallflat(data.Items[0].love);
+						alert(love_flat[0].flatid);
 						get_data(userid, love_flat);	
-						limits;
+						limits();
 						document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
 						tablestr(1);
 					}
