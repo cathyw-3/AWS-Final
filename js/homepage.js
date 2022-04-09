@@ -57,7 +57,7 @@ function handleLove(id, flat_id) {
 	$.ajax({
 		method: 'GET',
                 url: "https://4pc2qv9314.execute-api.us-east-1.amazonaws.com/userlove/userlove",
-    		data: data: JSON.stringify({"user_id": id, "flat_id": flat_id}),
+    		data: JSON.stringify({"user_id": id, "flat_id": flat_id}),
        		contentType: 'application/json',
 		
             	success: function(data) {
