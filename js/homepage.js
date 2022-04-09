@@ -52,11 +52,27 @@ function tablestr(num){
 			var str = '';
 			var flat_id = strs[i].flatid;
 			str+='<tr><td>'+'flat id: '+'</td>';
-			str+='<td>'+strs[i].flatid+' </td></tr>';
-			str+='<tr><td> flat type: </td>';
+			str+='<td>'+strs[i].flatid+' </td>';
+			str+='<td> flat type: </td>';
 			str+='<td>'+strs[i].flattype+'</td></tr>';
+
+			str+='<tr><td> Location: </td>';
+			str+='<td>'+strs[i].location_+'</td></tr>';
+
+			str+='<tr><td>'+'flat level: '+'</td>';
+			str+='<td>'+strs[i].level_+' </td>';
+			str+='<td> floor size: </td>';
+			str+='<td>'+strs[i].floor_size+'</td></tr>';
+
+			str+='<tr><td>'+'Furnished or not: '+'</td>';
+			str+='<td>'+strs[i].furnishing+' </td>';
+			str+='<td> Price: </td>';
+			str+='<td>'+strs[i].price+'</td></tr>';
+			
+			str+='<tr><td>Likes: </td>';
+			str+='<td>'+strs[i].clike+'</td>';
 			var temp1 = "<input type=\"button\" value=\"love\" onclick='handleLove(\""+user_id+"\",\""+flat_id+"\")'/>";
-			str+='<tr><td>'+temp1+'</td></tr>';
+			str+='<td>'+temp1+'</td></tr>';
 			str_arr[i-num1] = str;
 		}
  	}
