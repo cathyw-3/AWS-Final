@@ -100,8 +100,8 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript">
+		var all_flat = new Array();
 		function getallflat(love_arr) {
-			var all_flat = new Array();
 			for(var j=0;j<love_arr.length;++j) {
 				$.ajax({
 	        			type: 'POST',
@@ -118,7 +118,6 @@
 					}
 				});
 			}
-			return all_flat;
 		}
 		var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
 		$(document).ready(function() {
@@ -130,9 +129,9 @@
 		
             			success: function(data) {
 					if (data.Items.length > 0) {
-						var love_flat = getallflat(data.Items[0].love);
-						alert(love_flat[0].flatid);
-						get_data(userid, love_flat);	
+						getallflat(data.Items[0].love);
+						alert(all_flat.length);
+						get_data(userid, all_flat);	
 						limits();
 						document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
 						tablestr(1);
