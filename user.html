@@ -114,10 +114,12 @@
 						if(data.Items.length > 0) {
 							alert(data.Items[0].flatid);
 							all_flat.push(data.Items[0]);
+							alert("push success");
 						}
 					}
 				});
 			}
+			alert(all_flat[0].flatid);
 			return all_flat;
 		}
 		var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
