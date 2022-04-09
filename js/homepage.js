@@ -68,17 +68,20 @@ function tablehistory(num){
 	var str_arr = []
 	var num1 = (num-1)*len;
 	var num2 = num*len;
-	document.getElementById("history1").innerHTML='';
-	document.getElementById("history2").innerHTML='';
-	document.getElementById("history3").innerHTML='';
+	document.getElementById("table1").innerHTML='';
+	document.getElementById("table2").innerHTML='';
+	document.getElementById("table3").innerHTML='';
 	for(var i=num1;i<num2;i++){
 		if (i < strs.length) {
 			var str = '';
-			str+='<td>'+strs[i]+'</td>';
+			var flat_id = strs[i].flatid;
+			str+='<td>'+strs[i].flatid+'</td>';
+			str+='<td>'+strs[i].clike+'</td>';
+			str+='<td>'+temp1+'</td>';
 			str_arr[i-num1] = str;
 		}
  	}
-	var table_arr = ["history1", "history2", "history3"];
+	var table_arr = ["table1", "table2", "table3"];
 	for (var j = 0; j < str_arr.length; ++j) {
 		document.getElementById(table_arr[j]).innerHTML+='<tr>'+str_arr[j]+'</tr>';
 	}

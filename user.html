@@ -111,9 +111,7 @@
 		
             				success: function(data) {
 						if(data.Items.length > 0) {
-							alert(data.Items[0].flatid);
 							all_flat.push(data.Items[0]);
-							alert("push success");
 						}
 					}
 				});
@@ -132,9 +130,9 @@
 						getallflat(data.Items[0].love);
 						alert(all_flat.length);
 						get_data(userid, all_flat);	
-						limits();
+						limitshistory();
 						document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
-						tablestr(1);
+						tablehistory(1);
 					}
 				}
 	    		});
