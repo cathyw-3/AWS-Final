@@ -130,7 +130,7 @@
 		
             			success: function(data) {
 					if (data.Items.length > 0) {
-						love_flat = getallflat(data.Items[0].love);
+						var love_flat = getallflat(data.Items[0].love);
 						alert(love_flat[0].flatid);
 						get_data(userid, love_flat);	
 						limits();
