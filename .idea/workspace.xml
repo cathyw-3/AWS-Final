@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aa0b923-24ab-4d69-97f6-6464d92b5364" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recommend/LFM_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/recommend/LFM_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recommend/demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/recommend/demo.py" afterDir="false" />

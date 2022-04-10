@@ -57,6 +57,7 @@ def main():
     P = get_latent_factors('./data/user_latent_factor.json')
     Q = get_latent_factors('./data/item_latent_factor.json')
     print(P)
+    print(Q)
 
     # get the records
     # TODO
