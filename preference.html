@@ -123,16 +123,13 @@
 		var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
 		$(document).ready(function() {
 	    		$.ajax({
-	        		type: 'GET',
-	        		url: API_URL+'/wrdbtest',
+	        		type: 'POST',
+	        		url: "https://fpiyr6ksh6.execute-api.us-east-1.amazonaws.com/default",
+				data: JSON.stringify({"userid": userid}),
+				contentType: 'application/json',
+				
 	        		success: function(data) {
-					data.Items.sort(function(a, b){
-              					return b.clike - a.clike;
-            				});
-					get_data(userid, data.Items);
-					limits();
-					document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
-					tablestr(1);
+					alert(data);
 	        		}
 	    		});
         	});
@@ -152,7 +149,7 @@
 		$('#Preference').on('click', function() {
 			var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
 	    		window.location.href='preference.html?userid='+userid;
-		});
+		})
 	</script>
 	<script src="js/cognito-auth.js"></script>
 	<script src="js/homepage.js"></script>
