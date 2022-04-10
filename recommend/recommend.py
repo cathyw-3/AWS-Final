@@ -3,10 +3,14 @@ from User import User
 from datetime import datetime, timezone, timedelta
 from DynamoDBService import DynamoDBService
 import urllib
+import urllib3
 import boto3
 
-import numpy as np
-import pandas as pd
+http = urllib3.PoolManager()
+
+
+# import numpy as np
+# import pandas as pd
 
 
 def get_latent_factors(records):
@@ -19,10 +23,9 @@ def get_latent_factors(records):
 
 def recommend_top_k(p, Q, k):
     # compute the score
-    score, p = {}, np.array(p)
+    score = {}
     for itemID, q in Q.items():
-        q = np.array(q)
-        score[itemID] = p @ q
+        score[itemID] = sum([p[i] * q[i] for i in range(len(p))])
     # sort
     score = sorted(score.items(), key=lambda x: x[1], reverse=True)
     # get top k items
@@ -35,31 +38,37 @@ def lambda_handler(event, context):
     userID = event.get('userid', '0')
 
     # # 1 & 2 Extract relevant metadata including S3URL out of input event
-    # object_get_context = event["getObjectContext"]
-    # request_route = object_get_context["outputRoute"]
-    # request_token = object_get_context["outputToken"]
-    # s3_url = object_get_context["inputS3Url"]
-    #
+    # s3_url = "s3://cs5224-latent-factors/user_latent_factor.json"
+
     # # 3 - Download S3 File
     # response = http.request('GET', s3_url)
-    #
     # original_object = response.data.decode('utf-8')
     # as_list = json.loads(original_object)
-    # P, Q = get_latent_factors(as_list)
+    # P = get_latent_factors(as_list)
 
+    # # 1 & 2 Extract relevant metadata including S3URL out of input event
+    # s3_url = "s3://cs5224-latent-factors/item_latent_factor.json"
+    # # 3 - Download S3 File
+    # response = http.request('GET', s3_url)
+    # original_object = response.data.decode('utf-8')
+    # as_list = json.loads(original_object)
+    # Q = get_latent_factors(as_list)
 
     # get S3 bucket
     s3 = boto3.client('s3')
-    bucket = event['S3']['name']
+    bucket = event['S3']['bucket']
     # user latent factors
-    key = urllib.parse.unquote_plus(event['S3']['key1'], encoding='utf-8')
+    # key = urllib.parse.unquote_plus(event['S3']['key1'], encoding='utf-8')
+    key = event['S3']['key1']
     response = s3.get_object(Bucket=bucket, Key=key)
-    doc = json.loads(response)
+    doc = json.loads(json.dumps(response))
     P = get_latent_factors(doc)
+
     # item latent factors
-    key = urllib.parse.unquote_plus(event['S3']['key2'], encoding='utf-8')
+    # key = urllib.parse.unquote_plus(event['S3']['key2'], encoding='utf-8')
+    key = event['S3']['key2']
     response = s3.get_object(Bucket=bucket, Key=key)
-    doc = json.loads(response)
+    doc = json.loads(json.dumps(response))
     Q = get_latent_factors(doc)
 
     # get the user latent factor

@@ -71,9 +71,10 @@ def print_latent_factors(file, P, Q):
 
 def main():
     # get the user and item list
-    # TODO
-    users = ['1', '2']
-    houses = ['1', '2']
+    with open('./data/user_list.txt', 'r') as f:
+        users = f.readline().split(' ')
+    with open('./data/house_list.txt', 'r') as f:
+        houses = f.readline().split(' ')
 
     # latent factor dimension
     F = 24
@@ -84,17 +85,16 @@ def main():
     Q = get_latent_factors('./data/item_latent_factor.json')
 
     # get the records
-    # TODO
-    records = [['1', '1', 4]]
+    records = pd.read_csv('./data/records.csv')
 
     # initialization
     P, Q = {}, {}
     for user in users:
         if user not in P.keys():
-            P[user] = [1/F for i in range(F)]
+            P[user] = [random.random() for i in range(F)]
     for house in houses:
         if house not in Q.keys():
-            Q[house] = [1/F for i in range(F)]
+            Q[house] = [random.random() for i in range(F)]
 
     # parameters
     learning_rate = 0.001
