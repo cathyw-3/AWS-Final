@@ -140,7 +140,7 @@
 	$('#handleUpload').on('click', function() {
 	    $.ajax({
 	        type: 'POST',
-	        data: JSON.stringify({"flatid": $('#info1').val(), "flattype": $('#info2').val(), "location": $('#info3').val(), "level": $('#info4').val(), "floor_size": $('info5').val(), "furnishing": $('#info6').val(), "price": $('#info7').val()}),
+	        data: JSON.stringify({"flatid": $('#info1').val(), "flattype": $('#info2').val(), "location": $('#info3').val(), "level": $('#info4').val(), "floor_size": $('#info5').val(), "furnishing": $('#info6').val(), "price": $('#info7').val()}),
 		url: API_URL+'/wrdbtest',
 		contentType: "application/json",
 
