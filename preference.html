@@ -123,7 +123,7 @@
 		var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
 		$(document).ready(function() {
 	    		$.ajax({
-				header("Access-Control-Allow-Origin: *");
+				processData: false,
 	        		type: 'GET',
 	        		url: "https://6bbwbn12z4.execute-api.us-east-1.amazonaws.com/default/recommend3?userid=wfd",
 				contentType: 'application/json',
