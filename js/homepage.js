@@ -51,26 +51,12 @@ function tablestr(num){
 		if (i < strs.length) {
 			var str = '';
 			var flat_id = strs[i].flatid;
-			str+='<tr><td>'+'flat id: '+'</td>';
-			str+='<td>'+strs[i].flatid+' </td>';
-			str+='<td> flat type: </td>';
-			str+='<td>'+strs[i].flattype+'</td></tr>';
-
-			str+='<tr><td> Location: </td>';
-			str+='<td>'+strs[i].location_+'</td></tr>';
-
-			str+='<tr><td>'+'flat level: '+'</td>';
-			str+='<td>'+strs[i].level_+' </td>';
-			str+='<td> floor size: </td>';
-			str+='<td>'+strs[i].floor_size+'</td></tr>';
-
-			str+='<tr><td>'+'Furnished or not: '+'</td>';
-			str+='<td>'+strs[i].furnishing+' </td>';
-			str+='<td> Price: </td>';
-			str+='<td>'+strs[i].price+'</td></tr>';
+			str+='<tr><th> ID </th><th> Type </th><th> Location </th></tr>';
+			str+='<tr><td>'+strs[i].flatid+'</td><td>'+strs[i].flattype+'</td><td>'+strs[i].location_+'</td></tr>';
+			str+='<tr><th> Level </th><th> Size </th><th> Furnishing </th><th> Price </th></tr>';
+			str+='<tr><td>'+strs[i].level_+'</td><td>'+strs[i].floor_size+'</td><td>'+strs[i].furnishing+'</td><td>'+strs[i].price+'</td></tr>';
 			
-			str+='<tr><td>Likes: </td>';
-			str+='<td>'+strs[i].clike+'</td>';
+			str+='<tr><td>Likes: '+strs[i].clike+'</td>';
 			var temp1 = "<input type=\"button\" value=\"love\" onclick='handleLove(\""+user_id+"\",\""+flat_id+"\")'/>";
 			str+='<td>'+temp1+'</td></tr>';
 			str_arr[i-num1] = str;
@@ -93,19 +79,12 @@ function tablehistory(num){
 		if (i < strs.length) {
 			var str = '';
 			var flat_id = strs[i].flatid;
-			str+='<tr><td>'+'flat id: '+strs[i].flatid+'</td>';
-			str+='<td> flat type: '+strs[i].flattype+'</td>';
-
-			str+='<td> Location: '+strs[i].location_+'</td>';
-
-			str+='<td>'+'flat level: '+strs[i].level_+'</td>';
-			str+='<td> floor size: '+strs[i].floor_size+'</td></tr>';
+			str+='<tr><th> ID </th><th> Type </th><th> Location </th></tr>';
+			str+='<tr><td>'+strs[i].flatid+'</td><td>'+strs[i].flattype+'</td><td>'+strs[i].location_+'</td></tr>';
+			str+='<tr><th> Level </th><th> Size </th><th> Furnishing </th><th> Price </th></tr>';
+			str+='<tr><td>'+strs[i].level_+'</td><td>'+strs[i].floor_size+'</td><td>'+strs[i].furnishing+'</td><td>'+strs[i].price+'</td></tr>';
 			
-			str+='<tr><td>'+'Furnished or not: '+strs[i].furnishing+' </td>';
-			
-			str+='<td> Price: '+strs[i].price+'</td></tr>';
-			
-			str+='<td>Likes: '+strs[i].clike+'</td></tr>';
+			str+='<tr><td>Likes: '+strs[i].clike+'</td></tr>';
 			
 			str_arr[i-num1] = str;
 		}
