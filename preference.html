@@ -123,17 +123,14 @@
 		var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
 		$(document).ready(function() {
 	    		$.ajax({
-	        		type: 'POST',
-	        		url: "https://fpiyr6ksh6.execute-api.us-east-1.amazonaws.com/default",
+	        		type: 'GET',
+	        		url: "https://6bbwbn12z4.execute-api.us-east-1.amazonaws.com/default/recommend",
 				data: JSON.stringify({"userid": userid}),
 				contentType: 'application/json',
 				
 	        		success: function(data) {
 					alert(data);
 	        		}
-				fail: function(err) {
-					alert(err);
-				}
 	    		});
         	});
 		
@@ -149,7 +146,7 @@
 			var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
 	    		window.location.href='user.html?userid='+userid;
 		});
-		$('#Preference').on('click', function() {
+		$('#filterPreference').on('click', function() {
 			var userid = window.location.search.match(new RegExp("[\?\&]userid=([^\&]+)", "i"))[1];
 	    		window.location.href='preference.html?userid='+userid;
 		})
