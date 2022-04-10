@@ -125,8 +125,9 @@
 	    		$.ajax({
 	        		type: 'GET',
 	        		url: "https://6bbwbn12z4.execute-api.us-east-1.amazonaws.com/default/recommend?userid=0",
-				
+				contentType: 'application/json',
 	        		success: function(data) {
+					alert("success");
 					alert(data);
 	        		}
 	    		});
