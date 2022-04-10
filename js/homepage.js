@@ -79,10 +79,8 @@ function tablehistory(num){
 		if (i < strs.length) {
 			var str = '';
 			var flat_id = strs[i].flatid;
-			str+='<tr><th> ID </th><th> Type </th><th> Location </th></tr>';
-			str+='<tr><td>'+strs[i].flatid+'</td><td>'+strs[i].flattype+'</td><td>'+strs[i].location_+'</td></tr>';
-			str+='<tr><th> Level </th><th> Size </th><th> Furnishing </th><th> Price </th></tr>';
-			str+='<tr><td>'+strs[i].level_+'</td><td>'+strs[i].floor_size+'</td><td>'+strs[i].furnishing+'</td><td>'+strs[i].price+'</td></tr>';
+			str+='<tr><th> ID </th><th> Type </th><th> Location </th><th> Level </th><th> Size </th><th> Furnishing </th><th> Price </th></tr>';
+			str+='<tr><td>'+strs[i].flatid+'</td><td>'+strs[i].flattype+'</td><td>'+strs[i].location_+'</td><td>'+strs[i].level_+'</td><td>'+strs[i].floor_size+'</td><td>'+strs[i].furnishing+'</td><td>'+strs[i].price+'</td></tr>';
 			
 			str+='<tr><td>Likes: '+strs[i].clike+'</td></tr>';
 			
