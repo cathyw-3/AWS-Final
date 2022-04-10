@@ -124,13 +124,15 @@
 		$(document).ready(function() {
 	    		$.ajax({
 	        		type: 'POST',
-	        		url: "https://6bbwbn12z4.execute-api.us-east-1.amazonaws.com/default/recommend2",
+	        		url: "https://l9b2xaemd8.execute-api.us-east-1.amazonaws.com/recommend/recommend",
 				data: JSON.stringify({"userid": userid}),
 				contentType: 'application/json',
 				
 	        		success: function(data) {
-					alert("success");
-					alert(data);
+					get_data(userid, data);
+					limits();
+					document.getElementById("inputs").childNodes[0].style.backgroundColor="red";
+					tablestr(1);
 	        		}
 	    		});
         	});
